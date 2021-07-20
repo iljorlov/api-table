@@ -9,7 +9,6 @@
     direction: column;
 }
 .header{
-    /* position: absolute; */
     display: flex;
     width: 100%;
     height: 10vh;
@@ -31,8 +30,6 @@
     width: 100%;
     height: 80vh;
     justify-content: space-between;
-    /* align-content: stretch; */
-    /* align-items: center; */
 }
 
 .sidebar {
@@ -50,7 +47,6 @@
 
 
 .footer{
-    /* position: absolute; */
     display: flex;
     width: 100%;
     height: 10vh;
@@ -89,21 +85,10 @@ table{
 thead{
     background-color: #F9F9FA;
 }
+
 tbody{
     overflow: hidden;
 }
-/* 
-.table-main {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 100%;
-    justify-content: center;
-    align-content: center;
-    align-items: center;
-    background-color: #FFFFFF;
-    overflow: hidden;
-} */
 
 .table-app{
     display: flex;
@@ -111,18 +96,14 @@ tbody{
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    /* align-content:flex-end; */
-
 }
+
 .table-div{
     background-color: #FFFFFF;
     box-sizing: border-box;
     display: block;
     width: max;
-    height: 65vh;
-    /* align-self: flex-start; */
-    /* height: 50vh; */
-    
+    height: 65vh;    
 }
 
 #table-sort-cell:hover {
@@ -146,7 +127,6 @@ tbody{
     background-color: #F9F9FA;
     height: 5vh;
     margin-top: 1vh;
-
 }
 
 input {

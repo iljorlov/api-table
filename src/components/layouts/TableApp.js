@@ -13,14 +13,11 @@ export default class TableApp extends React.Component {
       isLoading: false,
       isError: false,
       sortDirection: true,
-      selectedCar: '',
-      searchInput: ''
-    }
+      selectedCar: ''
+      }
 
     this.handleClick = this.handleClick.bind(this)
     this.getData = this.getData.bind(this)
-    // this.handleInputChange = this.handleInputChange.bind(this)
-    // this.handleFilterChange = this.handleFilterChange.bind(this)
   }
 
   // async function to make a request to the API
@@ -44,13 +41,13 @@ export default class TableApp extends React.Component {
         })
     }
   }
-
+  // table header rendering
   renderTableHeader = () => {
     return this.state.tariffs_list.map(tariff => <th key={tariff} scope='col'>{tariff}</th>)
   
   }
 
-
+  // changes the sort direction where true means ascending, and false means descending 
   toggleSortDirection = () => {
     this.setState({
         sortDirection: !this.state.sortDirection
@@ -58,26 +55,22 @@ export default class TableApp extends React.Component {
   }
 
 
-
+  // handles clicks on individual table cells, then the data gets passed to SelectionBar component
   handleClick(mark, model, year='') {
-      console.log(mark, model, year)
       this.setState({
         selectedCar: mark + ' ' + model + ' ' + year
       })
     }
 
+  // gets data from the SearchBar child component. Assignes the value from the child to filteredCars in the state
   getData(val){
-    console.log(val)
     this.setState({
       filteredCars: val
     })
-    console.log('filtered: ', val)
   }
 
-
+  // render the body of the table (table cells with data)
   chooseTableDirection = () => {  
-    const carsCopy = [...this.state.cars]
-
     //   false direction - from z to a
     if (this.state.sortDirection === false) {
         return this.state.filteredCars.reverse().map(car => {
@@ -106,8 +99,6 @@ export default class TableApp extends React.Component {
                       } else if (car.tariffs[tariff].year) {
                         return (<td class='clickable-cell' key={car.model+Math.random()} onClick={() => this.handleClick(car.mark, car.model, car.tariffs[tariff].year)}>{car.tariffs[tariff] === undefined ? '–' : `${car.tariffs[tariff].year}`}</td> )
                       }
-                      
-                            // <td key={car.model+Math.random()} onClick={() => this.handleClick(car.mark, car.model, car.tariffs[tariff].year)}>{car.tariffs[tariff] === undefined ? '-' : `${car.tariffs[tariff].year}`}</td>  
                 })}
                 </tr>
             )
@@ -115,18 +106,12 @@ export default class TableApp extends React.Component {
     }  
 }
 
-  // onFilterChange = (filterData) => {
-  //   this.setState({
-  //     searchInput: filterData
-  //   })
-  // }
-
-
 
 
   render() {
         const {cars, tariffs_list, isLoading, isError, searchInput} = this.state
 
+        // ternary operator to handle loading of the API data
         if (isLoading) {
             return <div>Loading...</div>
         }
@@ -139,15 +124,13 @@ export default class TableApp extends React.Component {
         ? (
           <div className='table-app'>
             <div>
-              {/* <input type='value' value={this.state.searchInput} onChange={this.handleInputChange}></input>
-              <button onClick={this.handleFilterChange}>Search</button> */}
+
               <SearchBar 
                 cars={this.state.cars}
                 filteredCars={this.state.filteredCars}        
-                
                 sendData={this.getData}
-                
               />
+
             </div>
 
             <div className='table-div'>
