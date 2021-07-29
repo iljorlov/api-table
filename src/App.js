@@ -1,9 +1,9 @@
 import React from 'react';
 import './App.css';
-import Header from './components/layouts/Header';
-import Footer from './components/layouts/Footer';
-import Sidebar from './components/layouts/Sidebar';
-import TableApp from './components/layouts/TableApp';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import Sidebar from './components/Sidebar';
+import TableApp from './components/TableApp';
 
 function App() {
 
